@@ -154,7 +154,7 @@ const Home = ({ dispatch }) => {
 					<Table.Body>{renderCountRows()}</Table.Body>
 				</Table>
 				<Divider horizontal>Detalle</Divider>
-				<Table celled compact striped>
+				<Table celled compact striped className={styles.body}>
 					<Table.Header>
 						<Table.Row className={styles.header}>
 							<Table.HeaderCell className={styles.header} collapsing>
@@ -168,6 +168,7 @@ const Home = ({ dispatch }) => {
 					</Table.Header>
 					<Table.Body>{renderDetailedRows()}</Table.Body>
 				</Table>
+				<Divider horizontal>_</Divider>
 			</Container>
 		</Screen>
 	);

@@ -124,3 +124,7 @@
 .header {
 	background-color: var(--gray300) !important;
 }
+
+.body {
+	margin-bottom: 1rem !important;
+}

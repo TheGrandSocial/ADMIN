@@ -1,0 +1,50 @@
+@import "./theme.css";
+
+html {
+	font-size: 16px;
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+		"Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--gray50);
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Scrollbar Styling */
+body ::-webkit-scrollbar {
+	width: 0.6rem;
+	background-color: var(--gray50);
+}
+
+body ::-webkit-scrollbar-thumb {
+	border-radius: 0.8rem;
+	-webkit-box-shadow: inset 0 0 0.4rem hsla(0, 0%, 0%, 0.4);
+	box-shadow: inset 0 0 0.4rem hsla(0, 0%, 0%, 0.4);
+}
+
+body ::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 0.4rem hsla(0, 0%, 0%, 0.3);
+	box-shadow: inset 0 0 0.4rem hsla(0, 0%, 0%, 0.3);
+	border-radius: 0.8rem;
+	background-color: var(--gray50);
+}
+
+/* // Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) { ... }
+
+// Medium devices (Tablets, 768px and up)
+@media (max-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) { ... }
+
+// X-Large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) { ... }
+*/

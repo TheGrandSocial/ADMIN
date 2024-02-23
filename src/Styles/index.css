@@ -1,0 +1,77 @@
+@import "react-notifications-component/dist/theme.css";
+@import "semantic-ui-css/semantic.min.css";
+@import "animate.css";
+@import "./reset.css";
+@import "./default.css";
+
+/* Semantic UI Changes*/
+
+.ui.input > input {
+	line-height: 1.25;
+	padding: 0.3125rem 0.25rem;
+	border-radius: 0.25rem;
+	max-height: 2rem;
+}
+
+.ui.action.input > .button,
+.ui.action.input > .buttons > .button {
+	padding: 0.25rem 0.5rem;
+	font-size: 0.9rem;
+}
+
+.ui.divider {
+	margin: 0.75rem;
+}
+
+.ui.form .field > label {
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--black);
+	margin: 0 0 0.25rem 0;
+}
+
+.ui.grid,
+.ui.grid > * {
+	margin: 0 !important;
+	padding: 0.5rem 0 !important;
+}
+
+.ui.form .disabled.field,
+.ui.form .disabled.fields .field,
+.ui.form .field :disabled {
+	opacity: 1 !important;
+}
+
+.ui.form .field.disabled > label,
+.ui.form .fields.disabled > label {
+	opacity: 0.8 !important;
+}
+
+.ui.disabled.input,
+.ui.input:not(.disabled) input[disabled] {
+	opacity: 0.8 !important;
+}
+
+.ui.button {
+	margin: 0;
+	padding: 0.5rem 1rem;
+}
+
+i.icon {
+	margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+	.ui.modal > .actions {
+		padding: 1rem !important;
+	}
+
+	.ui.container {
+		width: 100% !important;
+	}
+}
+
+.ui.radio.checkbox .box,
+.ui.radio.checkbox label {
+	padding-left: 1.25rem !important;
+}

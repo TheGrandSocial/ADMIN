@@ -1,0 +1,48 @@
+.modal {
+	width: 70% !important;
+}
+
+.content {
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: space-evenly !important;
+	align-items: center !important;
+	padding: 1rem !important;
+}
+
+.text {
+	padding: 1rem 0 0 0 !important;
+	text-align: left !important;
+}
+
+.button {
+	margin: 0 !important;
+}
+
+.form {
+	width: 100% !important;
+}
+
+@media (min-width: 576px) {
+	.modal {
+		width: 60% !important;
+	}
+}
+
+@media (min-width: 768px) {
+	.modal {
+		width: 50% !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.modal {
+		width: 40% !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.modal {
+		width: 30% !important;
+	}
+}

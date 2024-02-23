@@ -60,7 +60,7 @@ const Home = ({ dispatch }) => {
 									if (item === "Total") {
 										return curr[`${date}_Date`] ? total + 1 : total;
 									} else {
-										if (includes(curr[date], item)) return total + 1;
+										if (includes(curr[date], item) && curr[`${date}_Date`]) return total + 1;
 										return total;
 									}
 								},

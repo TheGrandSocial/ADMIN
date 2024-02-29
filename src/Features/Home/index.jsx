@@ -42,6 +42,7 @@ const Home = ({ dispatch }) => {
 					"Basica / Social",
 					"Intermedia / Social",
 					"Avanzada / Social",
+					"Visitantes",
 					"Total",
 				],
 				(item) => {
@@ -54,6 +55,8 @@ const Home = ({ dispatch }) => {
 								(total, curr) => {
 									if (item === "Total") {
 										return curr[`${date}_Date`] ? total + 1 : total;
+									} else if (item === "Visitantes") {
+										return curr[`${date}_Date`] && curr["guestId"] ? total + 1 : total;
 									} else {
 										if (includes(curr[date], item) && curr[`${date}_Date`]) return total + 1;
 										return total;

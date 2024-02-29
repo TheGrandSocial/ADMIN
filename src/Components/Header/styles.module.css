@@ -1,0 +1,123 @@
+.header {
+	top: 0;
+	position: sticky;
+	position: -webkit-sticky;
+	background-color: var(--navy600);
+	height: 2.5rem;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.row {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	padding: 0 1rem !important;
+}
+
+.userRow {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.headerTextContainer {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+}
+
+.headerText {
+	font-size: 1.25rem !important;
+	color: var(--white) !important;
+	font-weight: 700 !important;
+}
+
+.menuRow {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.userRow:hover {
+	cursor: pointer !important;
+}
+
+.text {
+	font-size: 1rem !important;
+	color: var(--black) !important;
+	text-align: center !important;
+}
+
+.userText {
+	font-size: 1rem !important;
+	text-align: center !important;
+	padding: 0 0.5rem !important;
+	color: var(--white) !important;
+}
+
+.icon {
+	opacity: 1 !important;
+	line-height: 1 !important;
+	height: 1rem !important;
+	color: var(--white) !important;
+}
+
+.menu :hover {
+	cursor: pointer !important;
+}
+
+.menu {
+	padding: 0 !important;
+	margin: 0.75rem 0 0 !important;
+}
+
+.menuItem {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	padding: 0.75rem !important;
+}
+
+.menuIcon {
+	margin: 0 0.5rem 0 0 !important;
+}
+
+.companyTitle {
+	font-size: 1.125rem !important;
+	font-weight: 700 !important;
+	color: var(--white) !important;
+	padding-left: 1rem !important;
+}
+
+.companyLogo {
+	height: 2rem !important;
+	max-width: 8rem !important;
+	min-width: 2rem !important;
+	object-fit: cover !important;
+}
+
+.company {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	align-items: center;
+}
+
+@media (max-width: 768px) {
+	.row {
+		width: 100% !important;
+	}
+
+	.headerTextContainer {
+		flex: 2;
+	}
+
+	.userText {
+		display: none;
+	}
+}

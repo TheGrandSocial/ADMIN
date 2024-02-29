@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 
 // Libraries
 import PropTypes from "prop-types";
-import { Container, Table, Image } from "semantic-ui-react";
-import { isEmpty, reduce, pickBy, keys, map, includes } from "lodash";
+import { Container, Table, Divider, Image } from "semantic-ui-react";
+import { isEmpty, pickBy, keys, map, orderBy } from "lodash";
 import moment from "moment";
 
 // Redux
@@ -17,56 +17,26 @@ import Screen from "@Components/Screen";
 // Assets
 import { Logo } from "@Assets";
 
+// Utils
+import { getExcludingNulls } from "@Utils";
+
 // Styles
 import styles from "./styles.module.css";
 
-const Home = ({ dispatch }) => {
+const Users = ({ dispatch }) => {
+	const [items, setItems] = useState([]);
 	const [dateColumns, setDateColumns] = useState([]);
-	const [counts, setCounts] = useState([]);
 
 	useEffect(() => {
 		(async () => {
-			const data = await dispatch(genericAction({ method: "get", route: "/attendance", emptyResponseType: [] }));
+			const data = await dispatch(genericAction({ method: "get", route: "/attendance/users", emptyResponseType: [] }));
+			setItems(orderBy(data, ["user.name"], "asc"));
 			const dates = pickBy(data[0], (value, key) => {
 				if (new RegExp(/\b[0-9]+(?:_[0-9]+)+(?:_[0-9]{3,})?\b/, "g").test(key)) {
 					return key;
 				}
 			});
 			const columns = keys(dates);
-			const countData = map(
-				[
-					"Basica",
-					"Intermedia",
-					"Avanzada",
-					"Social",
-					"Basica / Social",
-					"Intermedia / Social",
-					"Avanzada / Social",
-					"Total",
-				],
-				(item) => {
-					let temp = { type: item };
-					for (const date of columns) {
-						temp = {
-							...temp,
-							[date]: reduce(
-								data,
-								(total, curr) => {
-									if (item === "Total") {
-										return curr[`${date}_Date`] ? total + 1 : total;
-									} else {
-										if (includes(curr[date], item) && curr[`${date}_Date`]) return total + 1;
-										return total;
-									}
-								},
-								0
-							),
-						};
-					}
-					return temp;
-				}
-			);
-			setCounts(countData);
 			setDateColumns(columns);
 		})();
 	}, []);
@@ -83,9 +53,9 @@ const Home = ({ dispatch }) => {
 		return columns;
 	};
 
-	const renderCountRows = () => {
-		const columns = map(counts, (item, index) => {
-			const { type } = item;
+	const renderDetailedRows = () => {
+		if (isEmpty(items)) return null;
+		const columns = map(items, (item, index) => {
 			let rows = [];
 			for (const x of dateColumns) {
 				rows.push(
@@ -95,8 +65,13 @@ const Home = ({ dispatch }) => {
 				);
 			}
 			return (
-				<Table.Row key={index}>
-					<Table.Cell collapsing>{type}</Table.Cell>
+				<Table.Row key={item.id}>
+					<Table.Cell collapsing>{`${getExcludingNulls(item, "user.name", "")} ${getExcludingNulls(
+						item,
+						"user.lastName",
+						""
+					)}`}</Table.Cell>
+					<Table.Cell collapsing>{getExcludingNulls(item, "user.phone", "")}</Table.Cell>
 					{rows}
 				</Table.Row>
 			);
@@ -105,29 +80,33 @@ const Home = ({ dispatch }) => {
 	};
 
 	return (
-		<Screen hasHeader headerTitle="Resumen">
+		<Screen hasHeader headerTitle="Usuarios">
 			<Container>
 				<div className={styles.container}>
 					<Image className={styles.logo} src={Logo} />
 				</div>
-				<Table celled compact striped>
+				<Table celled compact striped className={styles.body}>
 					<Table.Header>
 						<Table.Row className={styles.header}>
-							<Table.HeaderCell collapsing className={styles.header}>
-								Tipo
+							<Table.HeaderCell className={styles.header} collapsing>
+								Nombre
+							</Table.HeaderCell>
+							<Table.HeaderCell className={styles.header} collapsing>
+								Teléfono
 							</Table.HeaderCell>
 							{renderDateHeaderColumns()}
 						</Table.Row>
 					</Table.Header>
-					<Table.Body>{renderCountRows()}</Table.Body>
+					<Table.Body>{renderDetailedRows()}</Table.Body>
 				</Table>
+				<Divider horizontal>.</Divider>
 			</Container>
 		</Screen>
 	);
 };
 
-Home.propTypes = {
+Users.propTypes = {
 	dispatch: PropTypes.func,
 };
 
-export default connect()(Home);
+export default connect()(Users);

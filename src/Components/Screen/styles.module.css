@@ -3,10 +3,18 @@
 	width: 100vw;
 }
 
+.bodyWithHeader {
+	display: flex;
+	height: calc(100% - 2.5rem);
+	width: 100%;
+	flex-direction: row;
+	overflow: auto;
+}
+
 .body {
 	display: flex;
 	height: 100%;
 	width: 100%;
 	flex-direction: row;
-	overflow-y: auto;
+	overflow: auto;
 }

@@ -18,6 +18,8 @@ import Loading from "@Modals/Loading";
 // Features
 import NoMatch from "@Features/NoMatch";
 import Home from "@Features/Home";
+import Users from "@Features/Users";
+import Guests from "@Features/Guests";
 
 const App = ({ dispatch, isLoading, isError, notificationText, isVisible }) => {
 	const handleDismiss = () => {
@@ -31,6 +33,9 @@ const App = ({ dispatch, isLoading, isError, notificationText, isVisible }) => {
 			<NotificationDialog isVisible={isVisible} isError={isError} text={notificationText} onDismiss={handleDismiss} />
 			<Routes>
 				<Route index element={<Home />} />
+				<Route path="resumen" element={<Home />} />
+				<Route path="usuarios" element={<Users />} />
+				<Route path="visitantes" element={<Guests />} />
 				<Route path="*" element={<NoMatch />} />
 			</Routes>
 		</Dimmer.Dimmable>

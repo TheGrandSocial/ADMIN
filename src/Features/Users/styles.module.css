@@ -1,0 +1,130 @@
+.emptyContainer {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.emptyText {
+	font-size: 2rem !important;
+	font-weight: bold !important;
+	padding-top: 2rem !important;
+	text-align: center !important;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.centeredContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.buttonsContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 2rem 0 0;
+	padding: 0 0 2rem;
+}
+
+.buttonContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem 0 0;
+	padding: 0 0 2rem;
+}
+
+.button {
+	margin: 2rem 0 0 !important;
+	padding: 0.75rem 1rem !important;
+	color: var(--white) !important;
+	background-color: var(--blue500) !important;
+}
+
+.note {
+	text-align: center !important;
+	color: var(--gray600) !important;
+	text-align: center !important;
+}
+
+.title {
+	font-size: 1.5rem !important;
+	font-weight: bold !important;
+	padding: 0.75rem 0 0.25rem !important;
+	text-align: center !important;
+}
+
+.subTitle {
+	font-size: 1.25rem !important;
+	padding: 0.25rem 0 !important;
+	text-align: center !important;
+}
+
+.text {
+	font-size: 1.25rem !important;
+	color: var(--gray600) !important;
+	padding: 0.25rem 0 !important;
+	text-align: center !important;
+}
+
+.footerText {
+	font-weight: bold !important;
+	text-align: center !important;
+}
+
+.icon {
+	color: var(--green500) !important;
+}
+
+.accordion {
+	padding: 0.5rem !important;
+	text-align: center !important;
+	border-radius: 0.25rem !important;
+	color: var(--white) !important;
+}
+
+.divider {
+	width: 100% !important;
+	border-top: 2px solid rgba(34, 36, 38, 0.15) !important;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.form {
+	margin-top: 2rem !important;
+}
+
+.hyperlink {
+	font-size: 1rem !important;
+	color: var(--blue500) !important;
+	padding: 0.25rem 0 !important;
+	text-align: center !important;
+	margin-top: 2rem !important;
+}
+
+.hyperlink :hover {
+	cursor: pointer !important;
+}
+
+.logo {
+	height: 10rem !important;
+	object-fit: contain !important;
+}
+
+.header {
+	background-color: var(--gray300) !important;
+}
+
+.body {
+	margin-bottom: 1rem !important;
+}

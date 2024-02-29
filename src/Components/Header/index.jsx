@@ -15,6 +15,10 @@ import styles from "./styles.module.css";
 const Header = ({ headerTitle }) => {
 	const navigate = useNavigate();
 
+	const daily = () => {
+		navigate("/daily");
+	};
+
 	const resumen = () => {
 		navigate("/resumen");
 	};
@@ -38,6 +42,10 @@ const Header = ({ headerTitle }) => {
 					trigger={<Icon className={styles.icon} name="bars" />}>
 					<Popup.Content>
 						<Menu vertical>
+							<Menu.Item className={styles.menuItem} onClick={daily}>
+								<Icon className={styles.menuIcon} name="calendar" />
+								<Text className={styles.text}>Diario</Text>
+							</Menu.Item>
 							<Menu.Item className={styles.menuItem} onClick={resumen}>
 								<Icon className={styles.menuIcon} name="clipboard list" />
 								<Text className={styles.text}>Resumen</Text>

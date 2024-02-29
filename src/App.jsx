@@ -17,6 +17,7 @@ import Loading from "@Modals/Loading";
 
 // Features
 import NoMatch from "@Features/NoMatch";
+import Daily from "@Features/Daily";
 import Home from "@Features/Home";
 import Users from "@Features/Users";
 import Guests from "@Features/Guests";
@@ -32,7 +33,8 @@ const App = ({ dispatch, isLoading, isError, notificationText, isVisible }) => {
 			<Loading isFetching={isLoading} />
 			<NotificationDialog isVisible={isVisible} isError={isError} text={notificationText} onDismiss={handleDismiss} />
 			<Routes>
-				<Route index element={<Home />} />
+				<Route index element={<Daily />} />
+				<Route path="daily" element={<Daily />} />
 				<Route path="resumen" element={<Home />} />
 				<Route path="usuarios" element={<Users />} />
 				<Route path="visitantes" element={<Guests />} />

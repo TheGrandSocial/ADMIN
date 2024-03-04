@@ -43,17 +43,7 @@ const Daily = ({ dispatch }) => {
 			);
 
 			const countData = map(
-				[
-					"Basica",
-					"Intermedia",
-					"Avanzada",
-					"Social",
-					"Basica / Social",
-					"Intermedia / Social",
-					"Avanzada / Social",
-					"Visitantes",
-					"Total",
-				],
+				["Basica", "Intermedia", "Social", "Basica / Social", "Intermedia / Social", "Visitantes", "Total"],
 				(item) => {
 					let temp = { type: item };
 					for (const date of [maxDate]) {

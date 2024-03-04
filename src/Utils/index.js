@@ -1,5 +1,5 @@
 import moment from "moment";
-import { map, get } from "lodash";
+import { map, get, escapeRegExp } from "lodash";
 
 export const setWithExpiry = ({ key = 0, expires = true, timeInHours = 24 }) => {
 	const cookie = {
@@ -32,4 +32,12 @@ export const getValidationErrors = (validation, defaultErrors) => {
 export const getExcludingNulls = (object, path, defaultValue) => {
 	const temp = get(object, path, defaultValue);
 	return temp === null ? defaultValue : temp;
+};
+
+export const matchString = (data, value) => {
+	const regExp = new RegExp(escapeRegExp(value), "i");
+	const normalized = String(data)
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "");
+	return regExp.test(normalized);
 };

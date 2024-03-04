@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // Libraries
 import PropTypes from "prop-types";
 import { Container, Table, Divider, Image } from "semantic-ui-react";
-import { isEmpty, pickBy, keys, map, orderBy } from "lodash";
+import { isEmpty, pickBy, keys, map, sortBy } from "lodash";
 import moment from "moment";
 
 // Redux
@@ -30,7 +30,13 @@ const Users = ({ dispatch }) => {
 	useEffect(() => {
 		(async () => {
 			const data = await dispatch(genericAction({ method: "get", route: "/attendance/users", emptyResponseType: [] }));
-			setItems(orderBy(data, ["user.name"], "asc"));
+			const orderedData = sortBy(data, (item) =>
+				String(item.user.name)
+					.toLowerCase()
+					.normalize("NFD")
+					.replace(/[\u0300-\u036f]/g, "")
+			);
+			setItems(orderedData);
 			const dates = pickBy(data[0], (value, key) => {
 				if (new RegExp(/\b[0-9]+(?:_[0-9]+)+(?:_[0-9]{3,})?\b/, "g").test(key)) {
 					return key;

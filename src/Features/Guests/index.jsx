@@ -40,7 +40,6 @@ const Guests = ({ dispatch }) => {
 			});
 
 			const columns = keys(dates);
-			console.log(dates);
 			const maxDate = reduce(
 				columns,
 				(date, curr) => {

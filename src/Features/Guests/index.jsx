@@ -38,8 +38,17 @@ const Guests = ({ dispatch }) => {
 					return key;
 				}
 			});
+
 			const columns = keys(dates);
-			setDateColumns(columns);
+			const maxDate = reduce(
+				columns,
+				(date, curr) => {
+					if (moment(curr, "M_DD_YYYY").isAfter(moment(date, "M_DD_YYYY"))) return curr;
+					return date;
+				},
+				"1_01_1900"
+			);
+			setDateColumns([maxDate]);
 		})();
 	}, []);
 

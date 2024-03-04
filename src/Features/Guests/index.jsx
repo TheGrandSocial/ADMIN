@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // Libraries
 import PropTypes from "prop-types";
 import { Container, Table, Divider, Image, Button } from "semantic-ui-react";
-import { isEmpty, pickBy, keys, map, orderBy } from "lodash";
+import { isEmpty, pickBy, keys, map, orderBy, reduce } from "lodash";
 import moment from "moment";
 
 // Redux
@@ -40,6 +40,7 @@ const Guests = ({ dispatch }) => {
 			});
 
 			const columns = keys(dates);
+			console.log(dates);
 			const maxDate = reduce(
 				columns,
 				(date, curr) => {

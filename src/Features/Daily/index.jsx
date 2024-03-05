@@ -42,29 +42,38 @@ const Daily = ({ dispatch }) => {
 				"1_01_1900"
 			);
 
-			const countData = map(["Basica", "Intermedia", "Social", "Visitantes", "Total"], (item) => {
-				let temp = { type: item };
-				for (const date of [maxDate]) {
-					temp = {
-						...temp,
-						[date]: reduce(
-							data,
-							(total, curr) => {
-								if (item === "Total") {
-									return curr[`${date}_Date`] ? total + 1 : total;
-								} else if (item === "Visitantes") {
-									return curr[`${date}_Date`] && curr["guestId"] ? total + 1 : total;
-								} else {
-									if (includes(curr[date], item) && curr[`${date}_Date`]) return total + 1;
-									return total;
-								}
-							},
-							0
-						),
-					};
+			const countData = map(
+				["Basica", "Intermedia", "Clase Indeterminada", "Solo Social", "Visitantes", "Total"],
+				(item) => {
+					let temp = { type: item };
+					for (const date of [maxDate]) {
+						temp = {
+							...temp,
+							[date]: reduce(
+								data,
+								(total, curr) => {
+									if (item === "Total") {
+										return curr[`${date}_Date`] ? total + 1 : total;
+									} else if (item === "Visitantes") {
+										return curr[`${date}_Date`] && curr["guestId"] ? total + 1 : total;
+									} else if (item === "Solo Social") {
+										if (curr[date] === "Social" && curr[`${date}_Date`]) return total + 1;
+										return total;
+									} else if (item === "Clase Indeterminada") {
+										if (curr[date] === "Clase / Social" && curr[`${date}_Date`]) return total + 1;
+										return total;
+									} else {
+										if (includes(curr[date], item) && curr[`${date}_Date`]) return total + 1;
+										return total;
+									}
+								},
+								0
+							),
+						};
+					}
+					return temp;
 				}
-				return temp;
-			});
+			);
 			setCounts(countData);
 			setDateColumns([maxDate]);
 		})();
